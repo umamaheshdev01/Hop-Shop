@@ -7,7 +7,7 @@ import { ArrowRightIcon, GitHubLogoIcon } from "@radix-ui/react-icons";
 import { Button } from "@/components/ui/button";
 import { ModeToggle } from "@/components/mode-toggle";
 import { SignedIn } from "@clerk/nextjs";
-import { SignInButton, SignedOut, UserProfile } from "@clerk/clerk-react";
+import { SignInButton, SignedOut, UserButton, UserProfile } from "@clerk/clerk-react";
 
 export default function HomePage() {
   return (
@@ -35,7 +35,7 @@ export default function HomePage() {
             </Button>
             <ModeToggle />
             <SignedIn>
-              <UserProfile></UserProfile>
+              <UserButton></UserButton>
             </SignedIn>
 
               <SignedOut>
