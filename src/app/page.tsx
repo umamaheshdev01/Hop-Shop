@@ -62,7 +62,7 @@ export default function HomePage() {
               </Button>
               <Button variant="outline" asChild>
                 <Link
-                  href="https://ui.shadcn.com/"
+                  href="/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
