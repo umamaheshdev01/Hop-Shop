@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { useCartContext } from '../../app/context/CartProvider'; // Adjust the import path as necessary
+import Link from 'next/link';
 
 export function Showbabe({ id, image, des, short, price, name }) {
   const { add, cart } = useCartContext(); // Using the custom hook to access context state and dispatch function
@@ -57,6 +58,7 @@ export function Showbabe({ id, image, des, short, price, name }) {
                 <MinusIcon className="w-4 h-4" />
               </Button>
               <span className="text-2xl font-bold">{quantity}</span>
+              
               <Button
                 variant="outline"
                 size="icon"
@@ -67,6 +69,7 @@ export function Showbabe({ id, image, des, short, price, name }) {
               </Button>
             </div>
             <div className="flex gap-4">
+         <Link href={`payment/pay/${totalPrice}`}> <Button size='lg' variant={'outline'}>Buy Now</Button></Link> 
               <Button size="lg" onClick={addToCart} disabled={isInCart}>
                 {isInCart ? (
                   <>

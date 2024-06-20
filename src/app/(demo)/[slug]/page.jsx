@@ -69,12 +69,12 @@ export default function Meds({params}) {
           <BreadcrumbSeparator />
           <BreadcrumbItem>
             <BreadcrumbLink asChild>
-              <Link href="/medicines">Dashboard</Link>
+              <Link href="/medicines">Product</Link>
             </BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
-            <BreadcrumbPage>Cart</BreadcrumbPage>
+            <BreadcrumbPage>{ele?.name}</BreadcrumbPage>
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>

@@ -12,6 +12,8 @@ import {
   ShoppingCart
 } from "lucide-react";
 
+import CartIcon from '../components/demo/nice'
+
 type Submenu = {
   href: string;
   label: string;

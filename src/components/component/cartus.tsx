@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button'
 import { SignInButton, SignedOut } from '@clerk/clerk-react'
 import { SignedIn } from '@clerk/nextjs'
 import { MinusIcon, PlusIcon, Trash2Icon } from 'lucide-react'
+import Link from 'next/link'
 
 export function Cartus() {
   const { cart, total_price, add, remove } = useCartContext()
@@ -74,9 +75,10 @@ export function Cartus() {
               <p className="text-xs text-muted-foreground">Total:</p>
               <p className="text-lg font-medium">₹{total_price.toFixed(2)}</p>
             </div>
+            <Link href={`payment/${total_price}`}>
             <Button size="lg" className="w-full">
               Pay
-            </Button>
+            </Button></Link>
           </div>
         </div>
       )}
