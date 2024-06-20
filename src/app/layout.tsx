@@ -5,6 +5,7 @@ import "./globals.css";
 
 import { ThemeProvider } from "@/providers/theme-provider";
 import {ClerkProvider} from '@clerk/nextjs'
+import {CartProvider} from './context/CartProvider'
 
 export const metadata: Metadata = {
   metadataBase: new URL(
@@ -45,7 +46,8 @@ export default function RootLayout({
     <html  lang="en" suppressHydrationWarning>
       <body className={GeistSans.className}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          {children}
+          <CartProvider>{children}</CartProvider>
+          
         </ThemeProvider>
       </body>
     </html>

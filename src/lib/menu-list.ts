@@ -8,7 +8,8 @@ import {
   Shirt,
   Pill,
   Pizza,
-  Carrot
+  Carrot,
+  ShoppingCart
 } from "lucide-react";
 
 type Submenu = {
@@ -40,6 +41,13 @@ export function getMenuList(pathname: string): Group[] {
           label: "My Orders",
           active: pathname.includes("/dashboard"),
           icon: LayoutGrid,
+          submenus: []
+        },
+        {
+          href: "/cart",
+          label: "Cart",
+          active: pathname.includes("/cart"),
+          icon: ShoppingCart,
           submenus: []
         }
       ]
