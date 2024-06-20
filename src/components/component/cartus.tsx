@@ -47,7 +47,7 @@ export function Cartus() {
                 <img src={item.image} alt={item.name} className="w-20 h-20 rounded-md object-cover" />
                 <div className="grid gap-1 flex-1">
                   <h3 className="font-medium">{item.name}</h3>
-                  <p className="text-xs text-muted-foreground">${item.price.toFixed(2)}</p>
+                  <p className="text-xs text-muted-foreground">₹{item.price.toFixed(2)}</p>
                 </div>
                 <div className="flex items-center gap-2">
                   <Button

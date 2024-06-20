@@ -32,7 +32,7 @@ export function Component({ name, price, des, img, id }) {
           alt="Product Image"
           width={400}
           height={300}
-          className="w-full h-full object-contain transform transition-transform duration-300 hover:scale-110"
+          className="w-full bg-white h-full object-contain transform transition-transform duration-300 hover:scale-110"
         /></Link>
         
       </div>
