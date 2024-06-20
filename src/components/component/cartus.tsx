@@ -15,7 +15,7 @@ export function Cartus() {
       if (newQuantity < 1) {
         remove(id)
       } else {
-        add(id, item.name, item.price, -1, item.image) // decrement quantity by 1
+        add(id, item.name, item.price, -1, item.image)
       }
     }
   }
@@ -23,7 +23,7 @@ export function Cartus() {
   const increaseOne = (id) => {
     const item = cart.find(item => item.id === id)
     if (item) {
-      add(id, item.name, item.price, 1, item.image) // increment quantity by 1
+      add(id, item.name, item.price, 1, item.image)
     }
   }
 
@@ -39,15 +39,15 @@ export function Cartus() {
         <div className="grid gap-6">
           <div className="grid gap-4">
             <h1 className="text-2xl font-bold">Shopping Cart</h1>
-            <p className="text-muted-foreground">Review your items and proceed to checkout.</p>
+            <p className="text-sm text-muted-foreground">Review your items and proceed to checkout.</p>
           </div>
           <div className="grid gap-6">
             {cart.map((item) => (
-              <div key={item.id} className="grid grid-cols-[80px_1fr_auto] items-center gap-4">
+              <div key={item.id} className="grid grid-cols-[auto,1fr,auto,auto] items-center gap-4">
                 <img src={item.image} alt={item.name} className="w-20 h-20 rounded-md object-cover" />
-                <div className="grid gap-1">
+                <div className="grid gap-1 flex-1">
                   <h3 className="font-medium">{item.name}</h3>
-                  <p className="text-sm text-muted-foreground">${item.price.toFixed(2)}</p>
+                  <p className="text-xs text-muted-foreground">${item.price.toFixed(2)}</p>
                 </div>
                 <div className="flex items-center gap-2">
                   <Button
@@ -71,7 +71,7 @@ export function Cartus() {
           </div>
           <div className="grid gap-4 border-t pt-4">
             <div className="flex items-center justify-between">
-              <p className="text-muted-foreground">Total:</p>
+              <p className="text-xs text-muted-foreground">Total:</p>
               <p className="text-lg font-medium">₹{total_price.toFixed(2)}</p>
             </div>
             <Button size="lg" className="w-full">
@@ -90,16 +90,12 @@ const Datagram = () => {
       <div className="grid gap-6">
         <div className="grid gap-4">
           <SignedIn>
-          <h1 className="text-2xl font-bold">OMG ! Your cart is empty :(</h1>
+            <h1 className="text-2xl font-bold">Your cart is empty :(</h1>
           </SignedIn>
           <SignedOut>
             <h1 className="text-2xl font-bold">Please <SignInButton></SignInButton> :)</h1>
           </SignedOut>
-          
-
-        
         </div>
-        {/* <p className="text-muted-foreground">OMG ! Your cart is empty.</p> */}
       </div>
     </div>
   )
