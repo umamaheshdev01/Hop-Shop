@@ -7,6 +7,8 @@ import { Button } from "@/components/ui/button"
 import { useEffect, useState } from "react"
 import { useUser } from "@clerk/nextjs"
 import { createClient } from '@supabase/supabase-js'
+import { CircleCheckBig, TicketIcon } from "lucide-react"
+import { SignedIn, SignedOut } from "@clerk/clerk-react"
 const supabaseUrl = 'https://irjjmagghoqlestojjpo.supabase.co'
 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlyamptYWdnaG9xbGVzdG9qanBvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTg3ODE2NzcsImV4cCI6MjAzNDM1NzY3N30.xepw1_j-kFYJlacXLOO_yvIBo5a004Gcr-8hQnG6N7U'
 const supabase = createClient(supabaseUrl, supabaseKey)
@@ -17,28 +19,46 @@ export function Pokemon() {
   const [emails,setEmail] = useState('Email')
   const [phone,setPhone] = useState('+12345678')
   const [address,setAddress] = useState('-')
+  const [states,setState]=useState(true)
 
   const data = useUser()
+  const emaildata = data.user?.emailAddresses[0].emailAddress
+
+  const setData=async()=>{
+     
+    await supabase.from('Users').update({username:userame,email:emails,phone:phone,address:address}).eq('email',emails).then(()=>{
+      setState(false)
+    })
+  }
    
   useEffect(()=>{
 
+
+
     const fechme= async ()=>{
 
-      const {data,error} = await supabase.from('Users').select('*').eq('email',emails)
+      const {data,error} = await supabase.from('Users').select('*').eq('email',emaildata)
 
-      if(data?.length===1){
-            if(data[0].address){
-              setAddress(data[0].address)
-            }
+      
+
+      const dum = data[0]
+
+      if(dum.address){
+        setUsername(dum.username)
+        setAddress(dum.address)
+        setPhone(dum.phone)
+
       }
     
     }
 
     if(data.isLoaded){
+
+      if(userame === 'Username') {
       setUsername(data.user?.username)
       setEmail(data.user?.emailAddresses[0].emailAddress)
       setPhone(data.user?.phoneNumbers[0].phoneNumber)
-      fechme();
+      fechme();}
     }
 
     
@@ -47,6 +67,11 @@ export function Pokemon() {
   
 
   return (
+    <>
+    <SignedOut>
+      <p className="text-2xl text-bold">Please sign in :)</p>
+    </SignedOut>
+    <SignedIn>
     <Card className="w-full max-w-3xl">
       <CardHeader>
         <CardTitle>User Settings</CardTitle>
@@ -71,8 +96,12 @@ export function Pokemon() {
         </div>
       </CardContent>
       <CardFooter className="flex justify-end">
-        <Button>Save Changes</Button>
+       {states && <Button onClick={()=>setData()}>Save Changes</Button>}
+       {states || <Button> <span className="mr-2">Done    </span><CircleCheckBig></CircleCheckBig></Button>}
+
       </CardFooter>
     </Card>
+    </SignedIn>
+    </>
   )
 }
