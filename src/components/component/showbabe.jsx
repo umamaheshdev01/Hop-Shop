@@ -33,7 +33,7 @@ export function Showbabe({ id, image, des, short, price, name }) {
           alt="Product Image"
           width={400}
           height={400}
-          className="rounded-lg object-cover w-1/2 aspect-square md:w-auto md:h-auto"
+          className="rounded-lg object-contain w-1/2 aspect-square md:w-auto md:h-auto"
         />
       </div>
       <div className="grid gap-8">
