@@ -1,6 +1,8 @@
 'use client'
 import { useCartContext } from '../../app/context/CartProvider'
 import { Button } from '@/components/ui/button'
+import { SignInButton, SignedOut } from '@clerk/clerk-react'
+import { SignedIn } from '@clerk/nextjs'
 import { MinusIcon, PlusIcon, Trash2Icon } from 'lucide-react'
 
 export function Cartus() {
@@ -87,7 +89,14 @@ const Datagram = () => {
     <div className="w-full max-w-2xl mx-auto p-6 md:p-8">
       <div className="grid gap-6">
         <div className="grid gap-4">
+          <SignedIn>
           <h1 className="text-2xl font-bold">OMG ! Your cart is empty :(</h1>
+          </SignedIn>
+          <SignedOut>
+            <h1 className="text-2xl font-bold">Please <SignInButton></SignInButton> :)</h1>
+          </SignedOut>
+          
+
         
         </div>
         {/* <p className="text-muted-foreground">OMG ! Your cart is empty.</p> */}

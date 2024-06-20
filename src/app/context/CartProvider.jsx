@@ -7,7 +7,8 @@ const CartContext = createContext()
 const intialState = {
   cart: [],
   total_items: 0,
-  total_price: 0
+  total_price: 0,
+  special : { id : 1,name : '',price : 1,quantity : 1,image : ''}
 }
 
 const reducer = (state, action) => {
@@ -39,6 +40,25 @@ const reducer = (state, action) => {
       let newTotalPrice = updatedCart.reduce((acc, item) => acc + item.price * item.quantity, 0)
 
       return { ...state, cart: updatedCart, total_items: newTotalItems, total_price: newTotalPrice }
+    }
+
+    case 'SPECIAL': {
+      // Action payload should contain the new special item details
+      const { id, name, price, quantity, image } = action.payload;
+
+      // Creating the new special item object
+      const newSpecialItem = {
+        id,
+        name,
+        price,
+        quantity,
+        image
+      };
+
+      return {
+        ...state,
+        special: newSpecialItem
+      };
     }
 
     default:

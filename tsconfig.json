@@ -21,6 +21,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/demo/placeholder-content.jsx", "src/components/admin-panel/user-nav.jsx", "src/components/component/cart.tsx", "src/components/component/cartus.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/demo/placeholder-content.jsx", "src/components/admin-panel/user-nav.jsx", "src/components/component/cart.tsx", "src/components/component/cartus.tsx", "src/components/component/showbabe.jsx"],
   "exclude": ["node_modules"]
 }

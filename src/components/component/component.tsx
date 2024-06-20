@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { useCartContext } from '../../app/context/CartProvider'
+import Link from "next/link"
 
 export function Component({ name, price, des, img, id }) {
   const { cart, add, remove } = useCartContext()
@@ -25,13 +26,15 @@ export function Component({ name, price, des, img, id }) {
   return (
     <div className="bg-black-800 border-[1px] border-gray-800 rounded-lg shadow-md overflow-hidden w-full max-w-sm mx-auto">
       <div className="aspect-[4/3] overflow-hidden">
-        <img
+      <Link href={`${id}`}>
+      <img
           src={img}
           alt="Product Image"
           width={400}
           height={300}
           className="w-full h-full object-contain transform transition-transform duration-300 hover:scale-110"
-        />
+        /></Link>
+        
       </div>
       <div className="p-4 space-y-2">
         <h3 className="text-lg font-semibold">{name}</h3>
