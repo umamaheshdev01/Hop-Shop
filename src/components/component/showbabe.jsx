@@ -39,7 +39,7 @@ export function Showbabe({ id, image, des, short, price, name }) {
       </div>
       <div className="grid gap-8">
         <div>
-          <h1 className="font-bold text-2xl lg:text-4xl">{name}</h1>
+          <h1 className="font-bold text-3xl lg:text-4xl">{name}</h1>
           <p className="text-muted-foreground">{short}</p>
         </div>
         <div className="grid gap-6">
