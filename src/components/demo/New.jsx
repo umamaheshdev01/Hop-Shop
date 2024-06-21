@@ -54,7 +54,7 @@ export default function New() {
 
       const getDateTwoDaysAhead = (timestamp) => {
         const date = new Date(timestamp);
-        date.setDate(date.getDate() + 2);
+        date.setDate(date.getDate() + 0);
         const options = { year: 'numeric', month: 'long', day: 'numeric' };
         return date.toLocaleDateString('en-GB', options);
       };

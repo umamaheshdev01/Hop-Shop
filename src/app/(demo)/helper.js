@@ -41,7 +41,7 @@ const addFromCart = async ({ mail, proid, stock, price }) => {
       const order = recentOrder;
       const getDateTwoDaysAhead = (timestamp) => {
         const date = new Date(timestamp);
-        date.setDate(date.getDate() + 2);
+        date.setDate(date.getDate() + 0);
         const options = { year: 'numeric', month: 'long', day: 'numeric' };
         return date.toLocaleDateString('en-GB', options);
       };
