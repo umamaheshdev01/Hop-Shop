@@ -3,6 +3,7 @@
 import { Pay } from '@/components/component/pay';
 import Verify from '@/components/component/verify';
 import { Loader } from 'lucide-react';
+import CircularProgress from '@mui/material/CircularProgress';
 
 // Page.js
 import React, { useState, useEffect } from 'react';
@@ -24,7 +25,7 @@ const Page = ({ params }) => {
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       {loading ? (
         <div className="flex items-center justify-center text-xl space-x-2">
-           <Loader size={70}></Loader>
+           <CircularProgress className='text-2xl'></CircularProgress>
           <p className="text-gray-700 text-2xll">Processing payment ...</p>
         </div>
       ) : (

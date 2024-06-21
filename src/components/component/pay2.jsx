@@ -10,11 +10,10 @@ import { useUser } from "@clerk/nextjs"
 import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 
-
 export function Pay({price}) {
 
   const data2 = useUser()
-  const { cart } = useCartContext()
+  const { special } = useCartContext()
   const [mail,setMail] = useState('')
   const router = useRouter()
 
@@ -23,19 +22,16 @@ export function Pay({price}) {
   })
 
   const handleOrder =()=>{
-        cart.forEach(ele => {
-           
-            addFromCart({
-              mail : mail,
-              proid : ele.id,
-              stock : ele.quantity,
-              price : ele.price
-            })
        
-          
-        });
+    addFromCart({
+        mail :mail,
+        proid : special.id,
+        stock : special.quantity,
+        price : special.price
 
+    })
         router.push('/success')
+        
 
 
   }

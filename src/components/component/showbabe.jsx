@@ -5,26 +5,18 @@ import { useCartContext } from '../../app/context/CartProvider'; // Adjust the i
 import Link from 'next/link';
 
 export function Showbabe({ id, image, des, short, price, name }) {
-  const { add, cart } = useCartContext(); // Using the custom hook to access context state and dispatch function
-  const [quantity, setQuantity] = useState(1); // Initialize quantity state
+  const { add, setSpecial, cart } = useCartContext()
+  const [quantity, setQuantity] = useState(1)
+  const isInCart = cart.some(item => item.id === id)
+  const totalPrice = price * quantity
 
-  const increaseQuantity = () => {
-    setQuantity(quantity + 1);
-  };
+  const handleBuyNow = () => {
+    setSpecial(id, name, price, quantity, image)
+  }
 
-  const decreaseQuantity = () => {
-    if (quantity > 1) {
-      setQuantity(quantity - 1);
-    }
-  };
-
-  const totalPrice = price * quantity;
-
-  const addToCart = () => {
-    add(id, name, price, quantity, image); // Dispatching an 'ADD' action with item details
-  };
-
-  const isInCart = cart.some(item => item.id === id); // Check if item is already in cart
+  const handleAddToCart = () => {
+    add(id, name, price, quantity, image)
+  }
 
   return (
     <div className="grid md:grid-cols-[1fr_400px] gap-8 lg:gap-16 items-start max-w-6xl px-4 mx-auto py-8 md:py-12">
@@ -32,9 +24,9 @@ export function Showbabe({ id, image, des, short, price, name }) {
         <img
           src={image}
           alt="Product Image"
-          width={400}
-          height={400}
-          className="rounded-lg object-contain w-1/2 aspect-square md:w-auto md:h-auto"
+          width={600}
+          height={600}
+          className="rounded-lg object-cover w-full aspect-square"
         />
       </div>
       <div className="grid gap-8">
@@ -45,7 +37,7 @@ export function Showbabe({ id, image, des, short, price, name }) {
         <div className="grid gap-6">
           <p>{des}</p>
           <div>
-            <p className="text-2xl font-bold mt-4"> ₹{totalPrice.toFixed(2)}</p>
+            <p className="text-2xl font-bold mt-4">₹{totalPrice.toFixed(2)}</p>
           </div>
           <div className="flex items-center gap-6">
             <div className="flex items-center gap-2">
@@ -53,24 +45,25 @@ export function Showbabe({ id, image, des, short, price, name }) {
                 variant="outline"
                 size="icon"
                 className="rounded-full border w-8 h-8"
-                onClick={decreaseQuantity}
+                onClick={() => setQuantity(quantity > 1 ? quantity - 1 : 1)}
               >
                 <MinusIcon className="w-4 h-4" />
               </Button>
               <span className="text-2xl font-bold">{quantity}</span>
-              
               <Button
                 variant="outline"
                 size="icon"
                 className="rounded-full border w-8 h-8"
-                onClick={increaseQuantity}
+                onClick={() => setQuantity(quantity + 1)}
               >
                 <PlusIcon className="w-4 h-4" />
               </Button>
             </div>
             <div className="flex gap-4">
-         <Link href={`payment/pay/${totalPrice}`}> <Button size='lg' variant={'outline'}>Buy Now</Button></Link> 
-              <Button size="lg" onClick={addToCart} disabled={isInCart}>
+              <Link href={`payment/pay/${totalPrice}`}>
+                <Button size="lg" variant="outline" onClick={handleBuyNow}>Buy Now</Button>
+              </Link>
+              <Button size="lg" onClick={handleAddToCart} disabled={isInCart}>
                 {isInCart ? (
                   <>
                     <ShoppingCartIcon className="w-4 h-4 mr-2 text-green-500" />
@@ -88,6 +81,7 @@ export function Showbabe({ id, image, des, short, price, name }) {
         </div>
       </div>
     </div>
+  
   );
 }
 

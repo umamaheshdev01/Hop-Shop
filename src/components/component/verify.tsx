@@ -1,6 +1,7 @@
 'use client'
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
+import Link from "next/link"
 
 export default function Verify() {
   return (
@@ -15,7 +16,7 @@ export default function Verify() {
             Your payment has been processed. Click the button below to check your orders.
           </p>
         </div>
-        <Button className="w-full">Check Orders</Button>
+    <Link href={'/dashboard'}> <Button className="w-full">Check Orders</Button> </Link>   
       </CardContent>
     </Card>
   )

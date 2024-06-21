@@ -4,11 +4,11 @@ import { createContext } from 'react'
 
 const CartContext = createContext()
 
-const intialState = {
+const initialState = {
   cart: [],
   total_items: 0,
   total_price: 0,
-  special : { id : 1,name : '',price : 1,quantity : 1,image : ''}
+  special: { id: 1, name: '', price: 1, quantity: 1, image: '' }
 }
 
 const reducer = (state, action) => {
@@ -43,22 +43,9 @@ const reducer = (state, action) => {
     }
 
     case 'SPECIAL': {
-      // Action payload should contain the new special item details
-      const { id, name, price, quantity, image } = action.payload;
-
-      // Creating the new special item object
-      const newSpecialItem = {
-        id,
-        name,
-        price,
-        quantity,
-        image
-      };
-
-      return {
-        ...state,
-        special: newSpecialItem
-      };
+      const { id, name, price, quantity, image } = action.payload
+      const newSpecialItem = { id, name, price, quantity, image }
+      return { ...state, special: newSpecialItem }
     }
 
     default:
@@ -67,7 +54,7 @@ const reducer = (state, action) => {
 }
 
 function CartProvider({ children }) {
-  const [state, dispatch] = useReducer(reducer, intialState)
+  const [state, dispatch] = useReducer(reducer, initialState)
 
   const add = (id, name, price, quantity, image) => {
     dispatch({ type: 'ADD', payload: { id, name, price, quantity, image } })
@@ -77,8 +64,12 @@ function CartProvider({ children }) {
     dispatch({ type: 'REMOVE', payload: { id } })
   }
 
+  const setSpecial = (id, name, price, quantity, image) => {
+    dispatch({ type: 'SPECIAL', payload: { id, name, price, quantity, image } })
+  }
+
   return (
-    <CartContext.Provider value={{ ...state, add, remove }}>
+    <CartContext.Provider value={{ ...state, add, remove, setSpecial }}>
       {children}
     </CartContext.Provider>
   )

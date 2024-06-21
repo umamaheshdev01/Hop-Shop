@@ -1,52 +1,6 @@
 
-export function Orderlist() {
-  const orders = [
-    {
-      id: 1,
-      orderNumber: "#12345",
-      date: "June 18, 2024",
-      items: 3,
-      total: 149.99,
-      status: "Delivered",
-      deliveryDate: "June 20, 2024",
-    },
-    {
-      id: 2,
-      orderNumber: "#12346",
-      date: "June 15, 2024",
-      items: 1,
-      total: 29.99,
-      status: "Shipped",
-      deliveryDate: "June 18, 2024",
-    },
-    {
-      id: 3,
-      orderNumber: "#12347",
-      date: "June 10, 2024",
-      items: 2,
-      total: 79.98,
-      status: "Delivered",
-      deliveryDate: "June 12, 2024",
-    },
-    {
-      id: 4,
-      orderNumber: "#12348",
-      date: "June 5, 2024",
-      items: 1,
-      total: 59.99,
-      status: "Delivered",
-      deliveryDate: "June 7, 2024",
-    },
-    {
-      id: 5,
-      orderNumber: "#12349",
-      date: "June 2, 2024",
-      items: 4,
-      total: 199.96,
-      status: "Shipped",
-      deliveryDate: "June 5, 2024",
-    },
-  ]
+export function Orderlist({orders}) {
+ 
   return (
     <div className=" px-4 md:px-6 py-8">
       
@@ -66,7 +20,7 @@ export function Orderlist() {
                   <span className="text-gray-500 dark:text-gray-400">
                     {order.items} item{order.items > 1 ? "s" : ""}
                   </span>
-                  <span className="font-medium">${order.total.toFixed(2)}</span>
+                  <span className="font-medium">₹{order.total.toFixed(2)}</span>
                 </div>
                 <div className="flex items-center justify-between">
                   <span
@@ -83,8 +37,8 @@ export function Orderlist() {
               </div>
               <div className="flex justify-end">
                 <img
-                  src="/placeholder.svg"
-                  width={32}
+                  src={order.img}
+                  width={80}
                   height={32}
                   alt={`Order ${order.orderNumber}`}
                   className="rounded-md"
