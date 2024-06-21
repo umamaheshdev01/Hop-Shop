@@ -55,14 +55,14 @@ export default function HomePage() {
             </span>
             <div className="flex w-full items-center justify-center space-x-4 py-4 md:pb-6">
               <Button variant="default" asChild>
-                <Link href="/dashboard">
+                <Link href="/medicines">
                   Get Started
                   <ArrowRightIcon className="ml-2" />
                 </Link>
               </Button>
               <Button variant="outline" asChild>
                 <Link
-                  href="/"
+                  href="/medicines"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
