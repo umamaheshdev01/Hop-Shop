@@ -48,7 +48,7 @@ const addFromCart = async ({ mail, proid, stock, price }) => {
 
       // Send email using emailjs
       const emailParams = {
-        from_name: 'Hop Store',
+        from_name: 'Hop Shop',
         to_name: order.Users.username,
         date: getDateTwoDaysAhead(order.created_at),
         url: order.Product.image,
