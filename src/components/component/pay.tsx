@@ -22,10 +22,10 @@ export function Pay({price}) {
      setMail(data2.user?.emailAddresses[0].emailAddress)
   })
 
-  const handleOrder =()=>{
-        cart.forEach(ele => {
+  const handleOrder =async()=>{
+        cart.forEach(async(ele) => {
            
-            addFromCart({
+           await addFromCart({
               mail : mail,
               proid : ele.id,
               stock : ele.quantity,
