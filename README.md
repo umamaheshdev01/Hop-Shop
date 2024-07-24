@@ -19,8 +19,10 @@
 - **Email Notifications**: Send emails for purchase confirmations and updates.
 - **Shopping Cart**: Manage items in your cart and view previous purchases.
 
+  
+
 ![HopShop Screenshot](hop2.png)
 
 ### Links
 
-- [Live Demo](your-live-demo-link)
+- [Live Demo](hopshop.vercel.app)
