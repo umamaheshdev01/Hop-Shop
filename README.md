@@ -25,4 +25,4 @@
 
 ### Links
 
-- [Live Demo](hopshop.vercel.app)
+- [Live Demo](https://hopshop.vercel.app)
